@@ -1,5 +1,6 @@
 WristR = 0
 WristL = 0
+Difference = 0
 
 function setup() {
     canvas = createCanvas(400, 400);
@@ -16,6 +17,10 @@ function modelLoaded() {
 
 function draw() {
     background("grey")
+    fill("green")
+    textSize(Difference)
+    text(‘Mudit’, 100, 100)
+    
 }
 
 function gotPoses(results) {
@@ -25,6 +30,6 @@ function gotPoses(results) {
         WristR = results[0].pose.rightWrist.x;
         WristL = results[0].pose.leftWrist.x;
         console.log("Right Wrist Is On " + WristR + "Left Wrist Is On " + WristL);
-
+        Difference = floor(WristL - WristR)
     }
 }
